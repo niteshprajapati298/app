@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* LabScaleX – Final color theme tokens */
+:root {
+  --black: #0B0B0B;
+  --dark-grey: #141414;
+  --mid-grey: #2A2A2A;
+  --text-primary: #F5F5F5;
+  --text-secondary: #9B9B9B;
+  --purple: #7B5CFF;
+  --green: #7CFF3A;
+
+  --background: var(--black);
+  --foreground: var(--text-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: rgba(124, 255, 58, 0.25);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}

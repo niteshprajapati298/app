@@ -1,0 +1,241 @@
+/* Process: growth spine + floating nodes — dark, calm, experimental */
+
+.section {
+  --process-bg: #0B0B0B;
+  background: var(--process-bg);
+  color: var(--text-primary);
+  padding: 6rem 2rem 8rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 120vh;
+}
+
+.bgGlow {
+  position: absolute;
+  width: 60%;
+  max-width: 500px;
+  height: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(123, 92, 255, 0.06) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.headingLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+}
+
+.headingTitle {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Spine + nodes container: larger, more vertical room for path and labels */
+.spineWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  height: 82vh;
+  min-height: 580px;
+}
+
+.spineSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.spineTrack {
+  /* Faint track so spine is visible before draw */
+}
+
+.spineLine {
+  filter: drop-shadow(0 0 6px rgba(123, 92, 255, 0.2));
+}
+
+/* Scroll-driven pointer that moves along the path */
+.pathPointer {
+  pointer-events: none;
+}
+
+.pathPointerGlow {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 8px rgba(124, 255, 58, 0.6));
+}
+
+.pathPointerDot {
+  fill: var(--green);
+  filter: drop-shadow(0 0 6px rgba(124, 255, 58, 0.8));
+}
+
+/* Each node: centered at spine position, content offset for readability */
+.node {
+  position: absolute;
+  z-index: 2;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.nodeGlow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 255, 58, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.nodeRing {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 255, 58, 0.35);
+  pointer-events: none;
+}
+
+.nodeCore {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  box-shadow: 0 0 14px rgba(123, 92, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.nodeContent {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 1.5rem;
+  text-align: left;
+  min-width: 160px;
+  max-width: 240px;
+}
+
+.nodeTitle {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.nodeDescription {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Alternate node content position so labels don’t overlap spine */
+.node:nth-child(1) .nodeContent,
+.node:nth-child(2) .nodeContent,
+.node:nth-child(3) .nodeContent,
+.node:nth-child(4) .nodeContent,
+.node:nth-child(5) .nodeContent {
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 1.5rem;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodeRing {
+    animation: none;
+  }
+
+  .spineLine {
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .spineWrapper {
+    max-width: 100%;
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 1rem 5rem;
+    min-height: 100vh;
+  }
+
+  .spineWrapper {
+    height: 75vh;
+    min-height: 440px;
+  }
+
+  .nodeContent {
+    margin-left: 1rem;
+    min-width: 120px;
+  }
+
+  .nodeGlow {
+    width: 56px;
+    height: 56px;
+  }
+
+  .nodeRing {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nodeCore {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nodeTitle {
+    font-size: 0.9rem;
+  }
+
+  .nodeDescription {
+    font-size: 0.72rem;
+  }
+
+  .node:nth-child(1) .nodeContent,
+  .node:nth-child(2) .nodeContent,
+  .node:nth-child(3) .nodeContent,
+  .node:nth-child(4) .nodeContent,
+  .node:nth-child(5) .nodeContent {
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 1rem;
+  }
+}

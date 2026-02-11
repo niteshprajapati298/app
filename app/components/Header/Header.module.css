@@ -1,0 +1,133 @@
+/* Floating header – glassmorphism + green (7CFF3A) theme */
+.header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  box-sizing: border-box;
+
+  /* Glassmorphism */
+  background: rgba(11, 11, 11, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(124, 255, 58, 0.18);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.brand:hover {
+  color: var(--green);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--purple);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(123, 92, 255, 0.5);
+}
+
+.dotGreen {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(124, 255, 58, 0.6);
+}
+
+.brandName {
+  margin-left: 0.25rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navLink {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--green);
+  background: rgba(124, 255, 58, 0.08);
+}
+
+.cta {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  background: rgba(124, 255, 58, 0.12);
+  border: 1px solid rgba(124, 255, 58, 0.35);
+  color: var(--green);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta:hover {
+  background: rgba(124, 255, 58, 0.2);
+  border-color: rgba(124, 255, 58, 0.5);
+  box-shadow: 0 0 20px rgba(124, 255, 58, 0.15);
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: 0.75rem;
+    width: calc(100% - 1.5rem);
+    padding: 0.5rem 1rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .cta {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .brandName {
+    font-size: 0.95rem;
+  }
+}

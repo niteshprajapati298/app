@@ -1,0 +1,95 @@
+/* Results: principle-led, no vanity metrics. Minimal, typography-led, dark. */
+
+.section {
+  background: var(--black);
+  color: var(--text-primary);
+  padding: 6rem 2rem 7rem;
+  position: relative;
+}
+
+.header {
+  max-width: 640px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.item {
+  border-bottom: 1px solid var(--mid-grey);
+  padding-bottom: 2.5rem;
+  margin-bottom: 0;
+}
+
+.item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.phrase {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 0.4rem;
+}
+
+.support {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .list {
+    gap: 2.5rem;
+  }
+
+  .item {
+    padding-bottom: 2rem;
+  }
+
+  .phrase {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .support {
+    font-size: 0.8rem;
+  }
+}

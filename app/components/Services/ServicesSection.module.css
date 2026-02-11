@@ -1,0 +1,307 @@
+.section {
+  background: var(--black);
+  color: var(--text-primary);
+  padding: 4rem 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.heading {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.headingTitle {
+  margin-top: 0.75rem;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.headingTitle .green {
+  color: var(--green);
+}
+
+/* Main card grid – flex row, wrap, like provided .main-container */
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 1em;
+  padding: 0 0.5em;
+}
+
+/* Card variants: orange (↖️), blue (🎨), featured (💡) – using data-variant for selectors */
+.cardContainer {
+  --color-neutral-900: oklch(0.185 0 0);
+  padding: 2px;
+  border-radius: 1.5em;
+  position: relative;
+  background:
+    linear-gradient(-30deg, var(--gradient-color), transparent, var(--gradient-color)),
+    linear-gradient(to bottom, var(--color-neutral-900), var(--color-neutral-900));
+  flex-shrink: 0;
+}
+
+.cardContainer[data-variant="orange"] {
+  --f: url(#filter-electric-orange);
+  --electric-border-color: #dd8448;
+  --electric-light-color: oklch(from var(--electric-border-color) l c h);
+  --gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);
+}
+
+.cardContainer[data-variant="blue"] {
+  --f: url(#filter-electric-blue);
+  --electric-border-color: DodgerBlue;
+  --electric-light-color: oklch(from var(--electric-border-color) l c h);
+  --gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);
+}
+
+.cardContainer[data-variant="featured"] {
+  --f: url(#filter-electric-featured);
+  --electric-border-color: DodgerBlue;
+  --electric-light-color: oklch(from var(--electric-border-color) l c h);
+  --gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);
+  order: -1;
+}
+
+.cardContainer[data-variant="green"] {
+  --f: url(#filter-electric-green);
+  --electric-border-color: #7CFF3A;
+  --electric-light-color: oklch(from var(--electric-border-color) l c h);
+  --gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);
+}
+
+.innerContainer {
+  position: relative;
+}
+
+.borderOuter {
+  border: 2px solid oklch(from var(--electric-border-color) l c h / 0.5);
+  border-radius: 1.5em;
+  padding-right: 0.15em;
+  padding-bottom: 0.15em;
+}
+
+.mainCard {
+  width: 22rem;
+  aspect-ratio: 7 / 10;
+  border-radius: 1.5em;
+  border: 2px solid var(--electric-border-color);
+  margin-top: -4px;
+  margin-left: -4px;
+  filter: var(--f);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 55%),
+    rgba(0, 0, 0, 0.85);
+}
+
+.glowLayer1 {
+  border: 2px solid oklch(from var(--electric-border-color) l c h / 0.6);
+  border-radius: 1.5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  filter: blur(1px);
+}
+
+.glowLayer2 {
+  border: 2px solid var(--electric-light-color);
+  border-radius: 1.5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  filter: blur(4px);
+}
+
+.overlay1,
+.overlay2 {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5em;
+  mix-blend-mode: overlay;
+  transform: scale(1.1);
+  filter: blur(16px);
+  background: linear-gradient(
+    -30deg,
+    white,
+    transparent 30%,
+    transparent 70%,
+    white
+  );
+}
+
+.overlay1 {
+  opacity: 1;
+}
+
+.overlay2 {
+  opacity: 0.5;
+}
+
+.backgroundGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5em;
+  filter: blur(32px);
+  transform: scale(1.1);
+  opacity: 0.3;
+  z-index: -1;
+  background: linear-gradient(
+    -30deg,
+    var(--electric-light-color),
+    transparent,
+    var(--electric-border-color)
+  );
+}
+
+.contentContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentTop {
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+  padding-bottom: 1em;
+  flex: 1;
+}
+
+.contentBottom {
+  display: flex;
+  flex-direction: column;
+  padding: 0 3em 3em;
+  padding-top: 1em;
+}
+
+.pill {
+  background:
+    radial-gradient(
+      47.2% 50% at 50.39% 88.37%,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgba(255, 255, 255, 0.04);
+  position: relative;
+  transition: background 0.3s ease;
+  border-radius: 14px;
+  width: fit-content;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pill:hover {
+  background:
+    radial-gradient(
+      47.2% 50% at 50.39% 88.37%,
+      rgba(124, 255, 58, 0.15) 0%,
+      rgba(124, 255, 58, 0) 100%
+    ),
+    rgba(124, 255, 58, 0.06);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.48) 16.73%,
+    rgba(255, 255, 255, 0.08) 30.2%,
+    rgba(255, 255, 255, 0.08) 68.2%,
+    rgba(255, 255, 255, 0.6) 81.89%
+  );
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 2.25em;
+  font-weight: 500;
+  margin-top: auto;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.5;
+}
+
+.divider {
+  margin-top: auto;
+  border: none;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.1;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black,
+    transparent
+  );
+}
+
+.svgFilter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1em;
+  }
+
+  .grid {
+    padding: 0;
+  }
+
+  .mainCard {
+    width: min(22rem, 100%);
+  }
+
+  .headingTitle {
+    font-size: 1.6rem;
+  }
+
+  .contentTop {
+    padding: 2em 2em 0.75em;
+  }
+
+  .contentBottom {
+    padding: 0 2em 2em;
+  }
+
+  .title {
+    font-size: 1.75em;
+  }
+}
