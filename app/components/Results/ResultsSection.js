@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./ResultsSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -130,6 +131,7 @@ export default function ResultsSection() {
       id="results"
       aria-labelledby="results-heading"
     >
+      {/* <SectionBackground variant="light" /> */}
       <div className={styles.gridBg} aria-hidden="true" />
       <div className={styles.glowOrb} aria-hidden="true" />
 

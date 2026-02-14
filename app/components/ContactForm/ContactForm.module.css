@@ -1,0 +1,316 @@
+/* Contact form – premium card design with gradient borders and glow */
+
+.section {
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--text-primary);
+  padding: 7rem 2rem 9rem;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1rem;
+}
+
+.headline {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+}
+
+.accent {
+  background: linear-gradient(135deg, var(--green), #a8ff6d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.support {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Form card with gradient border */
+.formCard {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 255, 58, 0.3) 0%,
+    rgba(123, 92, 255, 0.2) 50%,
+    rgba(124, 255, 58, 0.2) 100%
+  );
+  transition: box-shadow 0.4s ease;
+}
+
+.formCard:hover {
+  box-shadow: 0 0 60px -15px rgba(124, 255, 58, 0.2), 0 0 40px -20px rgba(123, 92, 255, 0.15);
+}
+
+.formGlow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(124, 255, 58, 0.05) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.formInner {
+  position: relative;
+  padding: 2.5rem;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 50%
+  ),
+  rgba(15, 15, 15, 0.95);
+  border-radius: calc(1.5rem - 2px);
+  backdrop-filter: blur(12px);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.field {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.field:focus-within .fieldLabel {
+  color: var(--green);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(124, 255, 58, 0.4);
+  box-shadow: 0 0 0 3px rgba(124, 255, 58, 0.08);
+}
+
+.textarea {
+  min-height: 120px;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.success {
+  color: var(--green);
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 1rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+  background: var(--green);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit:hover:not(:disabled) {
+  background: #8fff4d;
+  box-shadow: 0 0 40px rgba(124, 255, 58, 0.4);
+  transform: translateY(-2px);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submitArrow {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.submit:hover:not(:disabled) .submitArrow {
+  transform: translateX(4px);
+}
+
+/* Contact card */
+.contactCard {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(123, 92, 255, 0.25) 0%,
+    rgba(124, 255, 58, 0.15) 100%
+  );
+}
+
+.contactCardInner {
+  padding: 2rem;
+  background: rgba(15, 15, 15, 0.9);
+  border-radius: calc(1.25rem - 2px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contactTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin: 0 0 1.5rem;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contactItem:hover {
+  background: rgba(124, 255, 58, 0.06);
+  border-color: rgba(124, 255, 58, 0.25);
+  color: var(--green);
+  transform: translateX(4px);
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(124, 255, 58, 0.1);
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.contactIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contactItem:hover .contactIcon {
+  background: rgba(124, 255, 58, 0.2);
+}
+
+.contactValue {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 5rem 1.5rem 7rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .formInner {
+    padding: 1.75rem;
+  }
+
+  .contactCardInner {
+    padding: 1.5rem;
+  }
+}

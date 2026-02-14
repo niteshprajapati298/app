@@ -7,7 +7,7 @@ import FaqSection from "./components/Faq/FaqSection";
 import TestimonialSection from "./components/TestimonialSection/TestimonialSection";
 import WhySection from "./components/Why/WhySection";
 import FounderPerspective from "./components/FounderPerspective/FounderPerspective";
-import CtaSection from "./components/CtaSection/CtaSection";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
       <FaqSection />
       <TestimonialSection />
       <FounderPerspective />
-      <CtaSection />
+      <ContactForm />
     </>
   );
 }

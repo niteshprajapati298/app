@@ -1,5 +1,6 @@
 "use client";
 
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./LogoMarquee.module.css";
 
 /* Replace with real logos: add logoUrl and render <img src={logo.logoUrl} alt={logo.name} /> */
@@ -37,6 +38,7 @@ export default function LogoMarquee() {
 
   return (
     <section className={styles.section} aria-label="Trusted by">
+      {/* <SectionBackground variant="light" /> */}
       <div className={styles.mask}>
         <div className={styles.track}>
           {row}

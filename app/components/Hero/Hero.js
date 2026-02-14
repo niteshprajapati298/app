@@ -1,20 +1,10 @@
 "use client";
 
-import { useRef, Suspense } from "react";
-import dynamic from "next/dynamic";
+import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./Hero.module.css";
-
-const Canvas = dynamic(
-  () => import("@react-three/fiber").then((mod) => mod.Canvas),
-  { ssr: false }
-);
-
-const HeroScene3D = dynamic(
-  () => import("../PhilosophySection/Scene3D").then((mod) => mod.default),
-  { ssr: false }
-);
 
 // Opening: four "doors" that slide away to reveal hero. Staggered for a classy reveal.
 const DOOR_DURATION = 0.9;
@@ -23,10 +13,11 @@ const CONTENT_DELAY = 0.5;
 const STAGGER = 0.1;
 
 const SOCIAL_LINKS = [
-  { href: "https://wa.me/", label: "WhatsApp", icon: "wa" },
-  { href: "https://instagram.com/", label: "Instagram", icon: "ig" },
-  { href: "https://linkedin.com/company/", label: "LinkedIn", icon: "li" },
-  { href: "https://x.com/", label: "Twitter", icon: "tw" },
+  { href: "https://wa.me/918700448074", label: "WhatsApp", icon: "wa" },
+  { href: "https://www.instagram.com/lab.scalex/", label: "Instagram", icon: "ig" },
+  { href: "https://www.youtube.com/@LabScaleX", label: "YouTube", icon: "yt" },
+  { href: "https://www.linkedin.com/company/labscalex", label: "LinkedIn", icon: "li" },
+  { href: "https://x.com/labscaleX", label: "X (Twitter)", icon: "tw" },
 ];
 
 export default function Hero() {
@@ -46,19 +37,7 @@ export default function Hero() {
       id="contact"
       aria-labelledby="hero-heading"
     >
-      {/* 3D background from Philosophy section */}
-      <div className={styles.canvasWrapper} aria-hidden="true">
-        <Suspense fallback={null}>
-          <Canvas
-            camera={{ position: [0, 0, 5], fov: 50 }}
-            className={styles.canvas}
-            gl={{ alpha: true, antialias: true }}
-          >
-            <HeroScene3D />
-          </Canvas>
-        </Suspense>
-      </div>
-
+      {/* <SectionBackground variant="light" /> */}
       <motion.div
         className={styles.veil}
         style={{ opacity: bgOpacity }}
@@ -95,53 +74,69 @@ export default function Hero() {
         </>
       )}
 
-      {/* Content: centered */}
+      {/* Content: two-column layout — left text, right visual (Trekcave-style) */}
       <div className={styles.layout}>
-        <motion.h1
-          id="hero-heading"
-          className={styles.headline}
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: reduced ? 0 : 0.8,
-            delay: reduced ? 0 : CONTENT_DELAY + STAGGER * 0,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-        >
-          Growth is a system,<br />
-          <span className={styles.accent}>not a stunt.</span>
-        </motion.h1>
+        <div className={styles.left}>
+          <span className={styles.decorIcon} aria-hidden="true">+</span>
+          <motion.h1
+            id="hero-heading"
+            className={styles.headline}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: reduced ? 0 : 0.8,
+              delay: reduced ? 0 : CONTENT_DELAY + STAGGER * 0,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+          >
+            Digital marketing for tech startups<br />
+            <span className={styles.accent}>that want to scale.</span>
+          </motion.h1>
 
-        <motion.p
-          className={styles.subtext}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: reduced ? 0 : 0.7,
-            delay: reduced ? 0 : CONTENT_DELAY + STAGGER * 1,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-        >
-          We observe, design experiments, and compound what works—without the noise.
-        </motion.p>
+          <motion.p
+            className={styles.subtext}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: reduced ? 0 : 0.7,
+              delay: reduced ? 0 : CONTENT_DELAY + STAGGER * 1,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+          >
+            Simple ideas, strong positioning, real growth.
+          </motion.p>
 
-        <motion.div
-          className={styles.ctaBlock}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: reduced ? 0 : 0.7,
-            delay: reduced ? 0 : CONTENT_DELAY + STAGGER * 2,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-        >
-          <Link href="mailto:lab.scalex@gmail.com" className={styles.ctaPrimary}>
-            Start a conversation
-          </Link>
-          <Link href="#process" className={styles.ctaSecondary}>
-            See how we work
-          </Link>
-        </motion.div>
+          <motion.div
+            className={styles.ctaBlock}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: reduced ? 0 : 0.7,
+              delay: reduced ? 0 : CONTENT_DELAY + STAGGER * 2,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+          >
+            <Link href="mailto:lab.scalex@gmail.com" className={styles.ctaPrimary}>
+              Start a conversation
+              <span className={styles.ctaArrow}>
+                <ArrowIcon />
+              </span>
+            </Link>
+          </motion.div>
+          <span className={styles.decorIconBottom} aria-hidden="true">+</span>
+        </div>
+
+        <div className={styles.right}>
+          <div className={styles.visualBlob} />
+          <div className={styles.socialProof}>
+            <div className={styles.avatars}>
+              {[1, 2, 3].map((i) => (
+                <div key={i} className={styles.avatar} />
+              ))}
+            </div>
+            <span className={styles.proofText}>18+ clients trusted</span>
+          </div>
+        </div>
       </div>
 
       {/* Floating sticky social media icons on the right */}
@@ -160,6 +155,14 @@ export default function Hero() {
         ))}
       </nav>
     </section>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
   );
 }
 
@@ -183,6 +186,11 @@ function SocialIcon({ name }) {
     tw: (
       <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+    yt: (
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
       </svg>
     ),
   };

@@ -2,21 +2,17 @@
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./WhySection.module.css";
 
-// Manifesto fragment: declarative statements only. No "we help/offer/provide".
-const LINES = [
-  "Most teams chase tactics. We build systems.",
-  "Growth should survive people, tools, and trends.",
-  "Clarity before scale. Evidence before opinion.",
-  "What compounds outlasts what spikes.",
+const PARAGRAPHS = [
+  "LabScaleX was founded on the straightforward tenet that most startups struggle because their story and positioning are unclear rather than because they have poor ideas. Brands require direction and consistency, but marketing nowadays is frequently reduced to posting content or following trends.",
+  "In addition to being a service provider, we designed LabScaleX to be a growth partner for tech startups. We approach each brand we work with as a long-term process in which community, strategy, and execution all develop together.",
+  "Assisting innovative concepts to develop into powerful, scalable brands has always been the aim.",
 ];
 
-// Single accent line (green) so the section stays minimal
-const ACCENT_INDEX = 2;
-
 const DURATION = 0.6;
-const STAGGER = 0.12;
+const STAGGER = 0.15;
 
 export default function WhySection() {
   const sectionRef = useRef(null);
@@ -30,17 +26,16 @@ export default function WhySection() {
       id="why"
       aria-labelledby="why-heading"
     >
-      <h2 id="why-heading" className={styles.visuallyHidden}>
+          {/* <SectionBackground variant="light" /> */}
+      <h2 id="why-heading" className={styles.heading}>
         Why LabScaleX
       </h2>
 
       <div className={styles.block}>
-        {LINES.map((line, index) => (
+        {PARAGRAPHS.map((text, index) => (
           <motion.p
             key={index}
-            className={
-              index === ACCENT_INDEX ? styles.lineAccent : styles.line
-            }
+            className={styles.paragraph}
             initial={{ opacity: 0, y: 20 }}
             animate={
               isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
@@ -51,7 +46,7 @@ export default function WhySection() {
               ease: [0.25, 0.1, 0.25, 1],
             }}
           >
-            {line}
+            {text}
           </motion.p>
         ))}
       </div>

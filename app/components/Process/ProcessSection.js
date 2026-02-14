@@ -2,6 +2,7 @@
 
 import { useRef, useState, useLayoutEffect } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./ProcessSection.module.css";
 
 // Animation: scroll-triggered spine draw + staggered node reveal; hover reveals description and subtle glow.
@@ -94,23 +95,28 @@ export default function ProcessSection() {
       id="process"
       aria-labelledby="process-heading"
     >
+      {/* <SectionBackground variant="light" /> */}
       <div className={styles.bgGlow} aria-hidden="true" />
 
       <header className={styles.heading}>
-        <motion.p
-          className={styles.headingLabel}
-          initial={{ opacity: 0, y: 8 }}
-          animate={
-            isInView
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: 8 }
-          }
-          transition={{
-            duration: reduced ? 0 : 0.5,
-          }}
-        >
-          How we work
-        </motion.p>
+        <div className={styles.headingLabelWrap}>
+          <span className={styles.headingLine} aria-hidden="true" />
+          <motion.p
+            className={styles.headingLabel}
+            initial={{ opacity: 0, y: 8 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 8 }
+            }
+            transition={{
+              duration: reduced ? 0 : 0.5,
+            }}
+          >
+            How we work
+          </motion.p>
+          <span className={styles.headingLine} aria-hidden="true" />
+        </div>
         <motion.h2
           id="process-heading"
           className={styles.headingTitle}

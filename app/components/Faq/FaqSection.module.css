@@ -1,12 +1,16 @@
 /* FAQ – minimal, no heavy animation, matches site cards */
 
 .section {
+  position: relative;
+  overflow: hidden;
   background: var(--black);
   color: var(--text-primary);
   padding: 6rem 2rem 7rem;
 }
 
 .wrap {
+  position: relative;
+  z-index: 1;
   max-width: 720px;
   margin: 0 auto;
 }

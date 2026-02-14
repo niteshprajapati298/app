@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./FaqSection.module.css";
 
 const FAQS = [
@@ -35,6 +36,7 @@ export default function FaqSection() {
 
   return (
     <section className={styles.section} id="faq" aria-labelledby="faq-heading">
+      {/* <SectionBackground /> */}
       <div className={styles.wrap}>
         <header className={styles.header}>
           <p className={styles.label}>FAQ</p>

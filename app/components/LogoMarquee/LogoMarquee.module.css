@@ -1,14 +1,17 @@
 /* Logo marquee – infinite scroll, dark bar */
 
 .section {
-  background: var(--dark-grey);
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
   border-top: 1px solid var(--mid-grey);
   border-bottom: 1px solid var(--mid-grey);
   padding: 1.5rem 0;
-  overflow: hidden;
 }
 
 .mask {
+  position: relative;
+  z-index: 1;
   mask-image: linear-gradient(
     to right,
     transparent,

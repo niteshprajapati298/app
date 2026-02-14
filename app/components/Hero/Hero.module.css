@@ -1,4 +1,4 @@
-/* Hero: creative background (concentric + radial), asymmetrical layout, opening doors animation */
+/* Hero: Trekcave-style two-column layout — left text, right visual blob */
 
 .section {
   --hero-bg: #0B0B0B;
@@ -14,33 +14,20 @@
   box-sizing: border-box;
 }
 
-/* 3D canvas background */
-.canvasWrapper {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.canvas {
-  width: 100% !important;
-  height: 100% !important;
-  background: transparent !important;
-}
-
 .veil {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: radial-gradient(
-    ellipse 80% 70% at 50% 50%,
-    rgba(11, 11, 11, 0.5) 0%,
-    rgba(11, 11, 11, 0.85) 50%,
+    ellipse 80% 70% at 30% 50%,
+    rgba(11, 11, 11, 0.3) 0%,
+    rgba(11, 11, 11, 0.7) 50%,
     var(--hero-bg) 100%
   );
   pointer-events: none;
 }
 
-/* Four "doors" that slide away on load — each covers a quadrant */
+/* Four "doors" that slide away on load */
 .door {
   position: absolute;
   width: 50%;
@@ -55,27 +42,51 @@
 .doorBl { bottom: 0; left: 0; }
 .doorBr { bottom: 0; right: 0; }
 
-/* Centered layout */
+/* Two-column layout: left content, right visual */
 .layout {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  max-width: 700px;
+  max-width: 1300px;
   margin: 0 auto;
   width: 100%;
 }
 
+/* Left column — text content */
+.left {
+  position: relative;
+  max-width: 520px;
+}
+
+.decorIcon {
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  font-size: 1rem;
+  color: var(--green);
+  opacity: 0.7;
+}
+
+.decorIconBottom {
+  position: absolute;
+  bottom: -1rem;
+  left: 6rem;
+  font-size: 1rem;
+  color: var(--purple);
+  opacity: 0.5;
+}
+
 .headline {
-  font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 600;
-  line-height: 1.06;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   color: var(--text-primary);
   margin: 0 0 1.25rem;
+  text-align: left;
 }
 
 .accent {
@@ -83,55 +94,111 @@
 }
 
 .subtext {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   color: var(--text-secondary);
   font-weight: 400;
-  margin: 0 0 1.5rem;
+  margin: 0 0 2rem;
+  text-align: left;
 }
 
 .ctaBlock {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
+  align-items: center;
 }
 
 .ctaPrimary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
   border-radius: 9999px;
-  background: transparent;
-  border: 1px solid rgba(124, 255, 58, 0.4);
-  color: var(--green);
-  font-size: 0.9rem;
-  font-weight: 500;
+  background: var(--green);
+  color: var(--black);
+  font-size: 0.95rem;
+  font-weight: 600;
   letter-spacing: 0.03em;
   text-decoration: none;
   transition:
-    border-color 0.25s ease,
     box-shadow 0.25s ease,
-    background 0.25s ease;
+    background 0.25s ease,
+    transform 0.2s ease;
 }
 
 .ctaPrimary:hover {
-  border-color: rgba(124, 255, 58, 0.65);
-  box-shadow: 0 0 28px rgba(124, 255, 58, 0.14);
-  background: rgba(124, 255, 58, 0.06);
+  box-shadow: 0 0 32px rgba(124, 255, 58, 0.35);
+  background: #8fff4d;
+  transform: translateY(-1px);
 }
 
-.ctaSecondary {
+.ctaArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.2);
+  color: var(--black);
+}
+
+.ctaPrimary:hover .ctaArrow {
+  background: rgba(11, 11, 11, 0.3);
+}
+
+/* Right column — visual blob with 3D scene */
+.right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.visualBlob {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  aspect-ratio: 4/3;
+  border-radius: 35% 65% 60% 40% / 55% 45% 55% 45%;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    rgba(124, 255, 58, 0.08) 0%,
+    rgba(123, 92, 255, 0.05) 40%,
+    rgba(20, 20, 20, 0.9) 100%
+  );
+  border: 1px solid rgba(124, 255, 58, 0.15);
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.5);
+}
+
+/* Social proof — avatars + text */
+.socialProof {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--hero-bg);
+  background: linear-gradient(135deg, var(--green), var(--purple));
+  margin-left: -12px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.proofText {
   font-size: 0.85rem;
   color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.ctaSecondary:hover {
-  color: var(--green);
 }
 
 /* Floating sticky social icons on the right */
@@ -167,6 +234,29 @@
 }
 
 @media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .right {
+    align-items: center;
+  }
+
+  .visualBlob {
+    max-width: 100%;
+    aspect-ratio: 16/10;
+  }
+
+  .socialProof {
+    align-self: center;
+  }
+
+  .decorIconBottom {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .socialNav {
     right: 1rem;
   }
@@ -182,6 +272,10 @@
     padding: 5rem 1.5rem 3.5rem;
   }
 
+  .layout {
+    gap: 2rem;
+  }
+
   .headline {
     font-size: clamp(2rem, 8vw, 2.75rem);
   }
@@ -191,8 +285,18 @@
   }
 
   .ctaPrimary {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.85rem;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .ctaArrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  .visualBlob {
+    aspect-ratio: 4/3;
+    border-radius: 25% 75% 65% 35% / 50% 50% 50% 50%;
   }
 
   .socialNav {

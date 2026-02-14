@@ -1,12 +1,16 @@
 /* Testimonials – same theme as Philosophy / Results cards */
 
 .section {
+  position: relative;
+  overflow: hidden;
   background: var(--black);
   color: var(--text-primary);
   padding: 6rem 2rem 7rem;
 }
 
 .wrap {
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -107,6 +111,18 @@
   position: relative;
   z-index: 1;
   padding: 1.75rem 1.75rem 2.25rem;
+}
+
+.avatarWrap {
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid color-mix(in srgb, var(--accent-color) 40%, transparent);
 }
 
 .quoteText {

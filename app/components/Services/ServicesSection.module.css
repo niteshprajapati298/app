@@ -1,4 +1,6 @@
 .section {
+  position: relative;
+  overflow: hidden;
   background: var(--black);
   color: var(--text-primary);
   padding: 4rem 2em;
@@ -8,6 +10,12 @@
   gap: 3rem;
   min-height: 100vh;
   box-sizing: border-box;
+}
+
+.section .heading,
+.section .columns {
+  position: relative;
+  z-index: 1;
 }
 
 .heading {
@@ -28,35 +36,79 @@
   color: var(--green);
 }
 
-/* Main card grid – flex row, wrap, like provided .main-container */
-.grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+/* 3-column layout with category headers */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   width: 100%;
   max-width: 1200px;
-  gap: 1em;
-  padding: 0 0.5em;
+  padding: 0 1rem;
 }
 
-/* Card variants: orange (↖️), blue (🎨), featured (💡) – using data-variant for selectors */
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.columnHeader {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.column[data-variant="blue"] .columnHeader {
+  color: DodgerBlue;
+  text-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
+}
+
+.column[data-variant="orange"] .columnHeader {
+  color: #dd8448;
+  text-shadow: 0 0 20px rgba(221, 132, 72, 0.5);
+}
+
+.column[data-variant="green"] .columnHeader {
+  color: var(--green);
+  text-shadow: 0 0 20px rgba(124, 255, 58, 0.5);
+}
+
+.columnCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.columnCards .cardContainer {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Card variants – single border, no doubled borders */
 .cardContainer {
-  padding: 2px;
-  border-radius: 1.5em;
+  border-radius: 1.25rem;
   position: relative;
-  background: var(--dark-grey);
-  border: 1px solid var(--mid-grey);
+  overflow: hidden;
   flex-shrink: 0;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  border: 1px solid color-mix(in srgb, var(--electric-border-color) 45%, transparent);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.02), transparent 55%),
+    rgba(20, 20, 20, 0.8);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.3s ease;
 }
 
 .cardContainer:hover {
-  transform: scale(1.04) translateY(-10px);
+  transform: scale(1.02) translateY(-6px);
   box-shadow:
     0 24px 48px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px color-mix(in srgb, var(--electric-border-color) 30%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--electric-border-color) 50%, transparent);
+  border-color: color-mix(in srgb, var(--electric-border-color) 60%, transparent);
 }
 
 .cardContainer[data-variant="orange"] {
@@ -69,55 +121,23 @@
   --electric-light-color: oklch(from var(--electric-border-color) l c h);
 }
 
-.cardContainer[data-variant="featured"] {
-  --electric-border-color: DodgerBlue;
-  --electric-light-color: oklch(from var(--electric-border-color) l c h);
-  order: -1;
-}
-
 .cardContainer[data-variant="green"] {
   --electric-border-color: #7CFF3A;
   --electric-light-color: oklch(from var(--electric-border-color) l c h);
 }
 
-.innerContainer {
-  position: relative;
-}
-
-.borderOuter {
-  border: 1px solid color-mix(in srgb, var(--electric-border-color) 40%, transparent);
-  border-radius: 1.5em;
-  padding-right: 0.15em;
-  padding-bottom: 0.15em;
-}
-
-.mainCard {
-  width: 22rem;
-  aspect-ratio: 7 / 8;
-  border-radius: 1.5em;
-  border: 1px solid color-mix(in srgb, var(--electric-border-color) 50%, transparent);
-  margin-top: -4px;
-  margin-left: -4px;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.02), transparent 55%),
-    rgba(0, 0, 0, 0.5);
-}
-
 .contentContainer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-height: 0;
 }
 
 .iconWrapper {
-  width: 3.5rem;
-  height: 3.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
   color: var(--electric-border-color);
   opacity: 0.9;
 }
@@ -136,16 +156,17 @@
 .contentTop {
   display: flex;
   flex-direction: column;
-  padding: 3em;
-  padding-bottom: 1em;
-  flex: 1;
+  padding: 1.75rem 1.5rem 1rem;
+  flex: 0 0 auto;
 }
 
 .contentBottom {
   display: flex;
   flex-direction: column;
-  padding: 0 3em 3em;
-  padding-top: 1em;
+  padding: 1rem 1.5rem 1.75rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .pill {
@@ -198,9 +219,10 @@
 }
 
 .title {
-  font-size: 2.25em;
+  font-size: 1.35rem;
   font-weight: 500;
-  margin-top: auto;
+  line-height: 1.25;
+  margin: 0;
   letter-spacing: -0.02em;
   color: var(--electric-light-color);
   transition: color 0.3s ease;
@@ -211,10 +233,12 @@
 }
 
 .description {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
+  margin: 0;
   color: oklch(from var(--electric-border-color) l c h / 0.75);
   transition: color 0.3s ease;
+  overflow-wrap: break-word;
 }
 
 .cardContainer:hover .description {
@@ -222,18 +246,18 @@
 }
 
 .divider {
-  margin-top: auto;
+  margin: 0 1.5rem;
   border: none;
   height: 1px;
   background-color: currentColor;
-  opacity: 0.1;
-  mask-image: linear-gradient(to right, transparent, black, transparent);
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black,
-    transparent
-  );
+  opacity: 0.15;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -241,12 +265,8 @@
     padding: 3rem 1em;
   }
 
-  .grid {
+  .columns {
     padding: 0;
-  }
-
-  .mainCard {
-    width: min(22rem, 100%);
   }
 
   .headingTitle {
@@ -254,14 +274,15 @@
   }
 
   .contentTop {
-    padding: 2em 2em 0.75em;
+    padding: 1.5rem 1.25rem 0.75rem;
   }
 
   .contentBottom {
-    padding: 0 2em 2em;
+    padding: 0.75rem 1.25rem 1.5rem;
   }
 
   .title {
-    font-size: 1.75em;
+    font-size: 1.2rem;
+    line-height: 1.25;
   }
 }

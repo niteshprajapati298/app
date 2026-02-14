@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import SectionBackground from "../SectionBackground/SectionBackground";
 import styles from "./CtaSection.module.css";
 
 const DURATION = 0.8;
@@ -19,6 +20,7 @@ export default function CtaSection() {
       id="cta"
       aria-labelledby="cta-heading"
     >
+      {/* <SectionBackground /> */}
       <div className={styles.wrap}>
         <motion.h2
           id="cta-heading"
