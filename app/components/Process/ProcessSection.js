@@ -9,32 +9,31 @@ import styles from "./ProcessSection.module.css";
 // Animation: scroll-triggered spine draw + staggered node reveal; hover reveals description and subtle glow.
 // Reduced motion: path draws instantly, no breathing loop, minimal transition duration.
 
-// Lab notebook tone, max 12 words per description
 const STEPS = [
   {
-    id: "observe",
-    title: "Observe",
-    description: "Notice what the system does before changing it.",
+    id: "discover",
+    title: "Discover",
+    description: "We understand your brand, audience, goals, and market before planning anything.",
   },
   {
-    id: "diagnose",
-    title: "Diagnose",
-    description: "Identify levers and constraints from evidence.",
+    id: "analyse",
+    title: "Analyse",
+    description: "We find gaps in branding, marketing, content, and growth opportunities.",
   },
   {
-    id: "design",
-    title: "Design Experiments",
-    description: "One variable, clear signal, defined end state.",
+    id: "strategise",
+    title: "Strategise",
+    description: "We build clear marketing, content, and positioning strategies for growth.",
   },
   {
-    id: "test",
-    title: "Test & Learn",
-    description: "Run. Measure. Decide. No vanity metrics.",
+    id: "execute",
+    title: "Execute",
+    description: "We launch, manage, and optimise campaigns based on real performance.",
   },
   {
-    id: "compound",
-    title: "Compound",
-    description: "Turn what works into repeatable structure.",
+    id: "scale",
+    title: "Scale",
+    description: "We grow what works to build consistent traffic, engagement, and results.",
   },
 ];
 
@@ -114,7 +113,7 @@ export default function ProcessSection() {
               duration: reduced ? 0 : 0.5,
             }}
           >
-            How we work
+            Process
           </motion.p>
           <span className={styles.headingLine} aria-hidden="true" />
         </div>
@@ -132,7 +131,7 @@ export default function ProcessSection() {
             delay: 0.08,
           }}
         >
-          A living system, not a checklist
+          How we work
         </motion.h2>
       </header>
 

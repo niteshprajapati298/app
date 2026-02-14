@@ -12,39 +12,39 @@ gsap.registerPlugin(ScrollTrigger);
 
 const STATEMENTS = [
   {
-    id: "predictable",
-    phrase: "Predictable growth beats explosive spikes.",
-    support: "Consistency over hype.",
+    id: "growth",
+    phrase: "Consistent brand growth.",
+    support: "Stronger positioning, better visibility, and steady audience growth across platforms.",
     icon: "chart",
-    accent: "html",
-  },
-  {
-    id: "clarity",
-    phrase: "Clarity is a result.",
-    support: "We measure what matters.",
-    icon: "target",
-    accent: "css",
-  },
-  {
-    id: "systems",
-    phrase: "Systems that work without supervision.",
-    support: "Built to run without you.",
-    icon: "gears",
-    accent: "js",
-  },
-  {
-    id: "evidence",
-    phrase: "Evidence over opinion.",
-    support: "Data shapes the next move.",
-    icon: "data",
     accent: "green",
   },
   {
-    id: "compound",
-    phrase: "What compounds stays.",
-    support: "One experiment feeds the next.",
-    icon: "layers",
+    id: "direction",
+    phrase: "Clear brand direction.",
+    support: "Your messaging, content, and marketing start working towards one clear goal.",
+    icon: "target",
     accent: "purple",
+  },
+  {
+    id: "leads",
+    phrase: "Higher quality leads.",
+    support: "Attract people who understand your value and are ready to buy.",
+    icon: "data",
+    accent: "html",
+  },
+  {
+    id: "presence",
+    phrase: "Strong digital presence.",
+    support: "A brand that looks credible, searchable, and trusted online.",
+    icon: "gears",
+    accent: "css",
+  },
+  {
+    id: "compound",
+    phrase: "Marketing that compounds.",
+    support: "Content and systems that keep generating results over time.",
+    icon: "layers",
+    accent: "js",
   },
 ];
 
