@@ -1,6 +1,48 @@
- "use client";
+"use client";
 
 import styles from "./ServicesSection.module.css";
+
+const iconGrowth = (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={styles.cardIcon}>
+    <path d="M8 36L16 28L24 32L40 16" />
+    <path d="M40 16V24H32" />
+  </svg>
+);
+
+const iconPerformance = (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={styles.cardIcon}>
+    <path d="M24 8v32M12 20v20M36 14v26" />
+    <circle cx="24" cy="24" r="4" fill="currentColor" fillOpacity="0.3" stroke="currentColor" />
+  </svg>
+);
+
+const iconWebDev = (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={styles.cardIcon}>
+    <rect x="6" y="12" width="36" height="24" rx="2" />
+    <path d="M6 20h36M14 28h4M22 28h4" />
+    <path d="M18 16l3-4 3 4" />
+  </svg>
+);
+
+const iconSEO = (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={styles.cardIcon}>
+    <circle cx="22" cy="22" r="10" />
+    <path d="M32 32l8 8" />
+  </svg>
+);
+
+const iconAnalytics = (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={styles.cardIcon}>
+    <path d="M8 36h8V24h-8zM20 36h8V16h-8zM32 36h8V8h-8z" />
+  </svg>
+);
+
+const iconContent = (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={styles.cardIcon}>
+    <path d="M12 36l8-24 8 12 8-12 8 24" />
+    <path d="M20 24h16" />
+  </svg>
+);
 
 const services = [
   {
@@ -10,6 +52,7 @@ const services = [
     title: "Growth Strategy",
     description:
       "Design an experiment-led roadmap so every campaign ladders up to revenue, not vanity metrics.",
+    icon: iconGrowth,
   },
   {
     id: "performance-marketing",
@@ -18,6 +61,7 @@ const services = [
     title: "Performance Marketing",
     description:
       "Turn ad spend into a measurable acquisition engine with clear CAC, payback, and ROI targets.",
+    icon: iconPerformance,
   },
   {
     id: "web-design-dev",
@@ -26,6 +70,7 @@ const services = [
     title: "Website Design & Development",
     description:
       "Ship a fast, conversion-focused site that explains your offer, qualifies visitors, and captures demand.",
+    icon: iconWebDev,
   },
   {
     id: "seo",
@@ -34,62 +79,41 @@ const services = [
     title: "SEO",
     description:
       "Build search visibility around real intent—pages that compound traffic and pipeline over time.",
+    icon: iconSEO,
+  },
+  {
+    id: "analytics-attribution",
+    variant: "orange",
+    label: "Measurement",
+    title: "Analytics & Attribution",
+    description:
+      "Connect campaigns to revenue with clean data, attribution modeling, and dashboards that tell the real story.",
+    icon: iconAnalytics,
+  },
+  {
+    id: "content-brand",
+    variant: "blue",
+    label: "Brand",
+    title: "Content & Brand",
+    description:
+      "Create messaging and creative that resonates—from landing pages to ad creative that drives conversions.",
+    icon: iconContent,
   },
 ];
 
-function TurbulentFilter({ id }) {
-  return (
-    <filter
-      id={id}
-      colorInterpolationFilters="sRGB"
-      x="-20%"
-      y="-20%"
-      width="140%"
-      height="140%"
-    >
-      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
-      <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
-        <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
-      </feOffset>
-      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
-      <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
-        <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
-      </feOffset>
-      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise3" seed="2" />
-      <feOffset in="noise3" dx="0" dy="0" result="offsetNoise3">
-        <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
-      </feOffset>
-      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise4" seed="2" />
-      <feOffset in="noise4" dx="0" dy="0" result="offsetNoise4">
-        <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
-      </feOffset>
-      <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
-      <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
-      <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
-      <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B" />
-    </filter>
-  );
-}
-
-function ServiceCard({ label, title, description, variant }) {
+function ServiceCard({ label, title, description, variant, icon }) {
   return (
     <article className={styles.cardContainer} data-variant={variant}>
       <div className={styles.innerContainer}>
         <div className={styles.borderOuter}>
           <div className={styles.mainCard} />
         </div>
-
-        <div className={styles.glowLayer1} />
-        <div className={styles.glowLayer2} />
       </div>
-
-      <div className={styles.overlay1} />
-      <div className={styles.overlay2} />
-      <div className={styles.backgroundGlow} />
 
       <div className={styles.contentContainer}>
         <div className={styles.contentTop}>
           <div className={styles.pill}>{label}</div>
+          <div className={styles.iconWrapper}>{icon}</div>
           <p className={styles.title}>{title}</p>
         </div>
 
@@ -110,15 +134,6 @@ export default function ServicesSection() {
       aria-labelledby="services-heading"
       id="services"
     >
-      <svg aria-hidden="true" className={styles.svgFilter} viewBox="0 0 500 700">
-        <defs>
-          <TurbulentFilter id="filter-electric-orange" />
-          <TurbulentFilter id="filter-electric-blue" />
-          <TurbulentFilter id="filter-electric-featured" />
-          <TurbulentFilter id="filter-electric-green" />
-        </defs>
-      </svg>
-
       <header className={styles.heading}>
         <p>Services</p>
         <h2 id="services-heading" className={styles.headingTitle}>
@@ -128,7 +143,7 @@ export default function ServicesSection() {
 
       <div className={styles.grid}>
         {services.map((service) => (
-          <ServiceCard key={service.id} {...service} variant={service.variant} />
+          <ServiceCard key={service.id} {...service} variant={service.variant} icon={service.icon} />
         ))}
       </div>
     </section>
