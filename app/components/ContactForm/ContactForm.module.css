@@ -207,6 +207,21 @@
   transform: translateX(4px);
 }
 
+/* Embedded form (modal) – single column, no card wrapper */
+.embedForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.embedForm .field {
+  margin-bottom: 1.25rem;
+}
+
+.embedForm .textarea {
+  min-height: 100px;
+}
+
 /* Contact card */
 .contactCard {
   position: relative;

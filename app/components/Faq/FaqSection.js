@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SectionBackground from "../SectionBackground/SectionBackground";
+import CtaButton from "../CtaButton/CtaButton";
 import styles from "./FaqSection.module.css";
 
 const FAQS = [
@@ -72,6 +73,10 @@ export default function FaqSection() {
             );
           })}
         </ul>
+
+        <div className={styles.ctaWrap}>
+          <CtaButton variant="outline">Still have questions? Get in touch</CtaButton>
+        </div>
       </div>
     </section>
   );

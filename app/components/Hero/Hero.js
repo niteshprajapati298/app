@@ -1,9 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import SectionBackground from "../SectionBackground/SectionBackground";
+import CtaButton from "../CtaButton/CtaButton";
 import styles from "./Hero.module.css";
 
 // Opening: four "doors" that slide away to reveal hero. Staggered for a classy reveal.
@@ -116,12 +115,9 @@ export default function Hero() {
               ease: [0.25, 0.1, 0.25, 1],
             }}
           >
-            <Link href="mailto:lab.scalex@gmail.com" className={styles.ctaPrimary}>
+            <CtaButton variant="hero" className={styles.ctaPrimary}>
               Start a conversation
-              <span className={styles.ctaArrow}>
-                <ArrowIcon />
-              </span>
-            </Link>
+            </CtaButton>
           </motion.div>
           <span className={styles.decorIconBottom} aria-hidden="true">+</span>
         </div>
@@ -155,14 +151,6 @@ export default function Hero() {
         ))}
       </nav>
     </section>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
   );
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import SectionBackground from "../SectionBackground/SectionBackground";
+import CtaButton from "../CtaButton/CtaButton";
 import styles from "./ServicesSection.module.css";
 
 const iconBrand = (
@@ -174,6 +175,10 @@ export default function ServicesSection() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className={styles.ctaWrap}>
+        <CtaButton variant="secondary">Start a conversation</CtaButton>
       </div>
     </section>
   );

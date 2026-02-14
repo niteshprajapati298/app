@@ -198,6 +198,14 @@
   text-align: left;
 }
 
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nodeRing {
     animation: none;

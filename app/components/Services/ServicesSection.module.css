@@ -245,6 +245,12 @@
   color: oklch(from var(--electric-border-color) l c h / 0.9);
 }
 
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
 .divider {
   margin: 0 1.5rem;
   border: none;

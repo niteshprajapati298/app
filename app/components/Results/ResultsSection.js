@@ -5,6 +5,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionBackground from "../SectionBackground/SectionBackground";
+import CtaButton from "../CtaButton/CtaButton";
 import styles from "./ResultsSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -216,6 +217,10 @@ export default function ResultsSection() {
           </motion.li>
         ))}
       </ul>
+
+      <div className={styles.ctaWrap}>
+        <CtaButton variant="secondary">Get in touch</CtaButton>
+      </div>
     </section>
   );
 }

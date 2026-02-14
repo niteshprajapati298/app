@@ -3,6 +3,7 @@
 import { useRef, useState, useLayoutEffect } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
 import SectionBackground from "../SectionBackground/SectionBackground";
+import CtaButton from "../CtaButton/CtaButton";
 import styles from "./ProcessSection.module.css";
 
 // Animation: scroll-triggered spine draw + staggered node reveal; hover reveals description and subtle glow.
@@ -303,6 +304,10 @@ export default function ProcessSection() {
             </motion.div>
           );
         })}
+      </div>
+
+      <div className={styles.ctaWrap}>
+        <CtaButton variant="secondary">Let&apos;s talk</CtaButton>
       </div>
     </section>
   );

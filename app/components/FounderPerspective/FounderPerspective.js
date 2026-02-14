@@ -1,27 +1,25 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionBackground from "../SectionBackground/SectionBackground";
+import CtaButton from "../CtaButton/CtaButton";
 import styles from "./FounderPerspective.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FOUNDER_IMAGE =
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop";
+const FOUNDER_IMAGE = "/founder.png";
 
 const LINES = [
-  "Most founders chase tactics.",
-  "We build systems that compound.",
+  "Most startups struggle because their story and positioning are unclear.",
+  "Not because they have poor ideas.",
 ];
 
 export default function FounderPerspective() {
   const sectionRef = useRef(null);
   const lineRefs = useRef([]);
-  const imageRef = useRef(null);
   const isInView = useInView(sectionRef, { amount: 0.2, once: true });
 
   useEffect(() => {
@@ -45,23 +43,6 @@ export default function FounderPerspective() {
           }
         );
       });
-      if (imageRef.current) {
-        gsap.fromTo(
-          imageRef.current,
-          { scale: 0.9, opacity: 0 },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 75%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -83,22 +64,19 @@ export default function FounderPerspective() {
         {/* Left: Founder image with creative frame */}
         <div className={styles.imageColumn}>
           <motion.div
-            ref={imageRef}
             className={styles.imageFrame}
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className={styles.imageInner}>
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={FOUNDER_IMAGE}
-                alt="Founder"
-                fill
-                sizes="(max-width: 900px) 100vw, 45vw"
+                alt="LabScaleX Founder — Dipanshu"
                 className={styles.founderImage}
-                priority={false}
               />
-              <div className={styles.imageOverlay} />
+              <div className={styles.imageOverlay} aria-hidden="true" />
             </div>
             <div className={styles.frameGlow} />
             <div className={styles.frameBorder} />
@@ -134,8 +112,21 @@ export default function FounderPerspective() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            We don&apos;t optimize for the next quarter. We build growth engines
-            that run without us—systems that survive people, tools, and trends.
+            Brands require direction and consistency, but marketing nowadays is
+            frequently reduced to posting content or following trends. In
+            addition to being a service provider, we designed LabScaleX to be a
+            growth partner for tech startups.
+          </motion.p>
+          <motion.p
+            className={styles.support}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            We approach each brand we work with as a long-term process in which
+            community, strategy, and execution all develop together. Assisting
+            innovative concepts to develop into powerful, scalable brands has
+            always been the aim.
           </motion.p>
 
           <motion.div
@@ -146,6 +137,15 @@ export default function FounderPerspective() {
           >
             <span className={styles.signatureLine} />
             <span className={styles.signatureText}>LabScaleX</span>
+          </motion.div>
+
+          <motion.div
+            className={styles.ctaWrap}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <CtaButton variant="primary">Start a conversation</CtaButton>
           </motion.div>
         </div>
       </div>

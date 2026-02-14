@@ -210,6 +210,14 @@
   margin: 0 0 0.5rem;
 }
 
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
 .support {
   font-size: 0.9rem;
   font-weight: 400;
