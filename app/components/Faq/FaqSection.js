@@ -17,8 +17,8 @@ const FAQS = [
     a: "The electric filter fought the content. We simplified to clean gradients and glows so the copy, icons, and hover states read clearly on all screens.",
   },
   {
-    q: "What's happening in the Three.js \"How we think\" section?",
-    a: "A lightweight React-Three-Fiber scene renders floating wireframe shapes and a subtle grid behind the philosophy cards, giving a systems-and-experiments feel that matches the brand.",
+    q: "What's happening in the Three.js hero background?",
+    a: "A lightweight React-Three-Fiber scene renders floating wireframe shapes and a subtle grid behind the hero, giving a systems-and-experiments feel that matches the brand.",
   },
   {
     q: "Will all these animations hurt performance?",
