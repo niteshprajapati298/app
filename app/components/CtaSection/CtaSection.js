@@ -59,7 +59,7 @@ export default function CtaSection() {
           }}
         >
           <Link
-            href="mailto:lab.scalex@gmail.com"
+            href="mailto:labs.scalex@gmail.com"
             className={styles.cta}
             aria-label="Email LabScaleX to start a conversation"
           >

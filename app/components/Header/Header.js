@@ -31,7 +31,7 @@ export default function Header() {
         </nav>
 
         <a
-          href="mailto:lab.scalex@gmail.com"
+          href="mailto:labs.scalex@gmail.com"
           className={styles.cta}
           aria-label="Email us"
         >

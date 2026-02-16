@@ -7,7 +7,7 @@ import styles from "./ContactForm.module.css";
 
 const CONTACT = [
   { type: "phone", value: "+91 8700448074", href: "tel:+918700448074", icon: "phone" },
-  { type: "email", value: "lab.scalex@gmail.com", href: "mailto:lab.scalex@gmail.com", icon: "mail" },
+  { type: "email", value: "labs.scalex@gmail.com", href: "mailto:labs.scalex@gmail.com", icon: "mail" },
   { type: "website", value: "labscalex.com", href: "https://www.labscalex.com", icon: "globe", external: true },
 ];
 

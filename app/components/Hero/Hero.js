@@ -13,7 +13,7 @@ const STAGGER = 0.1;
 
 const SOCIAL_LINKS = [
   { href: "https://wa.me/918700448074", label: "WhatsApp", icon: "wa" },
-  { href: "https://www.instagram.com/lab.scalex/", label: "Instagram", icon: "ig" },
+  { href: "https://www.instagram.com/labs.scalex/", label: "Instagram", icon: "ig" },
   { href: "https://www.youtube.com/@LabScaleX", label: "YouTube", icon: "yt" },
   { href: "https://www.linkedin.com/company/labscalex", label: "LinkedIn", icon: "li" },
   { href: "https://x.com/labscaleX", label: "X (Twitter)", icon: "tw" },
